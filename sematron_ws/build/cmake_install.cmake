@@ -117,6 +117,8 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unsp
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   INCLUDE("/home/marcoarruda/Desktop/sematron_ros/sematron_ws/build/gtest/cmake_install.cmake")
+  INCLUDE("/home/marcoarruda/Desktop/sematron_ros/sematron_ws/build/programming_1/cmake_install.cmake")
+  INCLUDE("/home/marcoarruda/Desktop/sematron_ros/sematron_ws/build/programming_2/cmake_install.cmake")
   INCLUDE("/home/marcoarruda/Desktop/sematron_ros/sematron_ws/build/programming_3/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)

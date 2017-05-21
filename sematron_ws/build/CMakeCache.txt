@@ -319,6 +319,18 @@ message_runtime_DIR:PATH=/opt/ros/indigo/share/message_runtime/cmake
 nav_msgs_DIR:PATH=/opt/ros/indigo/share/nav_msgs/cmake
 
 //Value Computed by CMake
+programming_1_BINARY_DIR:STATIC=/home/marcoarruda/Desktop/sematron_ros/sematron_ws/build/programming_1
+
+//Value Computed by CMake
+programming_1_SOURCE_DIR:STATIC=/home/marcoarruda/Desktop/sematron_ros/sematron_ws/src/programming_1
+
+//Value Computed by CMake
+programming_2_BINARY_DIR:STATIC=/home/marcoarruda/Desktop/sematron_ros/sematron_ws/build/programming_2
+
+//Value Computed by CMake
+programming_2_SOURCE_DIR:STATIC=/home/marcoarruda/Desktop/sematron_ros/sematron_ws/src/programming_2
+
+//Value Computed by CMake
 programming_3_BINARY_DIR:STATIC=/home/marcoarruda/Desktop/sematron_ros/sematron_ws/build/programming_3
 
 //Dependencies for target
@@ -477,7 +489,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=3
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=5
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
