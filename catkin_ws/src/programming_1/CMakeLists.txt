@@ -203,6 +203,11 @@ include_directories(
 add_executable(exercise_1 src/exercise_1.cpp)
 target_link_libraries(exercise_1 ${catkin_LIBRARIES})
 
-
 add_executable(exercise_2 src/exercise_2.cpp)
 target_link_libraries(exercise_2 ${catkin_LIBRARIES})
+
+add_executable(exercise_1_done src/exercise_1_done.cpp)
+target_link_libraries(exercise_1_done ${catkin_LIBRARIES})
+
+add_executable(exercise_2_done src/exercise_2_done.cpp)
+target_link_libraries(exercise_2_done ${catkin_LIBRARIES})
