@@ -1,0 +1,2 @@
+programming_3
+-DCATKIN_DEVEL_PREFIX=/home/marcoarruda/Desktop/sematron_ros/sematron_ws/devel -DCMAKE_INSTALL_PREFIX=/home/marcoarruda/Desktop/sematron_ros/sematron_ws/install -G Unix Makefiles
