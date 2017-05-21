@@ -6,18 +6,21 @@
 //*** Callback function to print the distance using ROS_INFO
 void chatterCallback(const std_msgs::Float32 msg)
 {
+  ROS_INFO("Distance: [%f]", msg.data);
 }
 
 int main(int argc, char **argv)
 {
   // Initialize ros and node
+  ros::init(argc, argv, "listener");
 
+  ros::NodeHandle n;
 
   // Subscribing the Sensor topic
-
+  ros::Subscriber sub = n.subscribe("/vrep/vehicle/frontSonar", 1000, chatterCallback);
 
   // Remember to spin the code
-
+  ros::spin();
 
   return 0;
 }
