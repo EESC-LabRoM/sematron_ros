@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(programacao_2)
+project(programming_2)
 
 ## Add support for C++11, supported in ROS Kinetic and newer
 # add_definitions(-std=c++11)
@@ -106,7 +106,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES programacao_2
+#  LIBRARIES programming_2
 #  CATKIN_DEPENDS nav_core nav_msgs roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
@@ -124,7 +124,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/programacao_2.cpp
+#   src/${PROJECT_NAME}/programming_2.cpp
 # )
 
 ## Add cmake target dependencies of the library
