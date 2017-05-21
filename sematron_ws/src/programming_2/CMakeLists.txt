@@ -198,3 +198,15 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(sensor_sub src/sensor_sub.cpp)
+target_link_libraries(sensor_sub ${catkin_LIBRARIES})
+
+add_executable(sensor_sub_done src/sensor_sub_done.cpp)
+target_link_libraries(sensor_sub_done ${catkin_LIBRARIES})
+
+add_executable(vel_pub src/vel_pub.cpp)
+target_link_libraries(vel_pub ${catkin_LIBRARIES})
+
+add_executable(vel_pub_done src/vel_pub_done.cpp)
+target_link_libraries(vel_pub_done ${catkin_LIBRARIES})

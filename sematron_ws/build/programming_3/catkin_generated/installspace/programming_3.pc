@@ -1,8 +1,8 @@
-prefix=/home/marcoarruda/Desktop/sematron_ros/sematron_ws/install
+prefix=/home/victor/sematron_ros/sematron_ws/install
 
 Name: programming_3
 Description: Description of programming_3
 Version: 0.0.0
-Cflags: -I/home/marcoarruda/Desktop/sematron_ros/sematron_ws/install/include
-Libs: -L/home/marcoarruda/Desktop/sematron_ros/sematron_ws/install/lib -lprogramming_3
+Cflags: -I/home/victor/sematron_ros/sematron_ws/install/include
+Libs: -L/home/victor/sematron_ros/sematron_ws/install/lib -lprogramming_3
 Requires: 
