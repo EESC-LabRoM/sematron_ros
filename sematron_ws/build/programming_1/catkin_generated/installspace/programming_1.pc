@@ -1,8 +1,0 @@
-prefix=/home/victor/sematron_ros/sematron_ws/install
-
-Name: programming_1
-Description: Description of programming_1
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/victor/sematron_ros/sematron_ws/install/lib 
-Requires: 
