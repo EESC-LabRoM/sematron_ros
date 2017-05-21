@@ -124,7 +124,7 @@ include_directories(
 )
 
 ## Declare a C++ library
-add_library(${PROJECT_NAME} src/bug0.cpp src/math.cpp)
+add_library(${PROJECT_NAME} src/bug0.cpp src/bug1.cpp src/math.cpp)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries

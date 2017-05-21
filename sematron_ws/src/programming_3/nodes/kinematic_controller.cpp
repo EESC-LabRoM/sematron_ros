@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include "std_msgs/Float64.h"
+#include "std_msgs/Float32.h"
 #include "geometry_msgs/Twist.h"
 
 double v = 0, w = 0;
@@ -18,8 +18,8 @@ int main(int argc, char **argv)
     // Node
     ros::NodeHandle node;
     // Publisher
-    ros::Publisher pub_motorLeft = node.advertise<std_msgs::Float64>("/vrep/vehicle/motorLeftSpeed", 1);
-    ros::Publisher pub_motorRight = node.advertise<std_msgs::Float64>("/vrep/vehicle/motorRightSpeed", 1);
+    ros::Publisher pub_motorLeft = node.advertise<std_msgs::Float32>("/vrep/vehicle/motorLeftSpeed", 1);
+    ros::Publisher pub_motorRight = node.advertise<std_msgs::Float32>("/vrep/vehicle/motorRightSpeed", 1);
     // Subscriber
     ros::Subscriber sub_twist = node.subscribe("/cmd_vel", 1, twistCallback);
 
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     ros::Rate loop_rate(20);
 
     // ROS Messages
-    std_msgs::Float64 left_speed_msg, right_speed_msg;
+    std_msgs::Float32 left_speed_msg, right_speed_msg;
 
     // Parameters
     double radius = 0.1;

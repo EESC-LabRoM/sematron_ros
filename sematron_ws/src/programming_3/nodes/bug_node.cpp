@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include <programming_3/bug0.h>
+#include <programming_3/bug1.h>
 
 // ROS libraries
 #include <std_msgs/Float32.h>
@@ -7,7 +7,7 @@
 #include <nav_msgs/Odometry.h>
 
 // Instantiate obstacle avoidance algorithm
-bug::Bug0 mybug;
+bug::Bug1 mybug;
 
 /**
 * Front sonar  callback function. 
@@ -38,8 +38,8 @@ void leftSonarCallback(const std_msgs::Float32ConstPtr &sonar)
 */
 void odometryCallback(const nav_msgs::Odometry::ConstPtr &odom)
 {
-    mybug.goal.x = 1.425;
-    mybug.goal.y = 0.7;
+    mybug.goal.x = -1;
+    mybug.goal.y = -0.17;
     mybug.odometry = *odom;
 }
 
@@ -61,7 +61,7 @@ int main(int argc, char **argv)
     ros::Publisher pub_twist = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
 
     // Define ROS Loop rate
-    ros::Rate loop_rate(100);
+    ros::Rate loop_rate(20);
 
     // Define Goal
 
