@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   nav_msgs
   roscpp
   std_msgs
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -104,8 +105,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES programming_3
+ INCLUDE_DIRS include
+ LIBRARIES programming_3
 #  CATKIN_DEPENDS geometry_msgs nav_msgs roscpp std_msgs
 #  DEPENDS system_lib
 )
@@ -119,12 +120,11 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  include
 )
 
 ## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/programming_3.cpp
-# )
+add_library(${PROJECT_NAME} src/bug0.cpp src/math.cpp)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -151,8 +151,11 @@ include_directories(
 #   ${catkin_LIBRARIES}
 # )
 
-add_executable(kinematic_controller src/kinematic_controller.cpp)
+add_executable(kinematic_controller nodes/kinematic_controller.cpp)
 target_link_libraries(kinematic_controller ${catkin_LIBRARIES})
+
+add_executable(bug_node nodes/bug_node.cpp)
+target_link_libraries(bug_node ${catkin_LIBRARIES})
 
 #############
 ## Install ##
