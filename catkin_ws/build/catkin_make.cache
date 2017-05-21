@@ -1,2 +1,0 @@
-programming_1:programming_2
--DCATKIN_DEVEL_PREFIX=/home/victor/sematron_ros/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/victor/sematron_ros/catkin_ws/install -G Unix Makefiles
