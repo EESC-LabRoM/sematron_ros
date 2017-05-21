@@ -2,6 +2,8 @@
 #include <programming_3/math.h>
 
 int flag_bug_1 = 0;
+float v = 0.2;
+float w = 0.2;
 
 namespace bug
 {
@@ -40,11 +42,11 @@ void Bug1::goToPoint(void)
     delta = math::normalizeAngle((teta - yaw));
 
     if ( fabs(delta) > 0.2 ){
-    this->twist.angular.z = delta * 3;
-    this->twist.linear.x =(M_PI - fabs(delta))*1 ;
+    this->twist.angular.z = delta * 3 * w;
+    this->twist.linear.x =(M_PI - fabs(delta)) * 1 * v;
     } else {
-    this->twist.angular.z = delta * 1 ;
-    this->twist.linear.x = 1;
+    this->twist.angular.z = delta * 1 * w;
+    this->twist.linear.x = 1 * v;
     }
 }
 
@@ -61,34 +63,34 @@ void Bug1::wallFollower(void)
         SENÃO, E SE O SENSOR DA FRENTE NÃO ESTIVER ACIONADO, VIRA PARA A ESQUERDA*/
     df = this->sonarArray[LEFT_SONAR];
     if( this->sonarArray[FRONT_SONAR] < 0.5  && this->sonarArray[LEFT_SONAR]==0 && this->sonarArray[RIGHT_SONAR] == 0 && flag_bug_1 == 0 && this->sonarArray[FRONT_SONAR] != 0){
-        this->twist.angular.z = -1;
-        this->twist.linear.x =  0.5 ;
+        this->twist.angular.z = -1*w;
+        this->twist.linear.x =  0.5*v;
         std::cout << " Primeiro if" << std::endl;    
     }else if(this->sonarArray[FRONT_SONAR] != 0 && this->sonarArray[LEFT_SONAR]!=0){
-        this->twist.angular.z = -1.5;
-        this->twist.linear.x = 0.5 ; 
+        this->twist.angular.z = -1.5*w;
+        this->twist.linear.x = 0.5*v; 
         std::cout << " Segundo if" << std::endl;
     }else if ( this->sonarArray[LEFT_SONAR]  < 0.4 && this->sonarArray[LEFT_SONAR]  !=0  ){
         // Se  Delta d for maior que zero , o carro acelerou para a direita, logo deve ser desacelarado para a esquerda
         if ( (df - di) > 0. )
-            this->twist.angular.z = - (this->sonarArray[LEFT_SONAR] - 0.5 ) * 5 ;
+            this->twist.angular.z = - (this->sonarArray[LEFT_SONAR] - 0.5 ) * 5 * w ;
         else {
-            this->twist.angular.z = (this->sonarArray[LEFT_SONAR] - 0.5 ) * 5 ;
+            this->twist.angular.z = (this->sonarArray[LEFT_SONAR] - 0.5 ) * 5 * w;
         }
-        this->twist.linear.x =  2 ;
+        this->twist.linear.x =  2 * v;
         flag_bug_1 = 1;
         std::cout << " Terceiro if" << std::endl;
     }else if( this->sonarArray[LEFT_SONAR]>0.45 ) {
         if ( (df - di) < 0 )
-            this->twist.angular.z = - (this->sonarArray[LEFT_SONAR] - 0.4 ) * 5 ;
+            this->twist.angular.z = - (this->sonarArray[LEFT_SONAR] - 0.4 ) * 5 * w;
         else {
-            this->twist.angular.z = (this->sonarArray[LEFT_SONAR] - 0.4 ) * 5 ;
+            this->twist.angular.z = (this->sonarArray[LEFT_SONAR] - 0.4 ) * 5 * w;
         }
-        this->twist.linear.x =  2 ;
+        this->twist.linear.x =  2 * v;
         std::cout << " Quarto if" << std::endl;
     }else if (this->sonarArray[FRONT_SONAR] == 0 && this->sonarArray[LEFT_SONAR] == 0){
         std::cout << "Else" << std::endl;
-        this->twist.angular.z = 3;
+        this->twist.angular.z = 3 * w;
     }
     std::cout << "W: " << this->twist.angular.z << std::endl;
     std::cout << "ds: " << df -di << std::endl;
