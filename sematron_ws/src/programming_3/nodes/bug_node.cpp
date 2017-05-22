@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include <programming_3/bug1.h>
+#include <programming_3/bug0.h>
 
 // ROS libraries
 #include <std_msgs/Float32.h>
@@ -7,7 +7,7 @@
 #include <nav_msgs/Odometry.h>
 
 // Instantiate obstacle avoidance algorithm
-bug::Bug1 mybug;
+bug::Bug0 mybug;
 
 /**
 * Front sonar  callback function. 
