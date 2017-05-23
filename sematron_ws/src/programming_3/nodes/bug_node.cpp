@@ -38,8 +38,8 @@ void leftSonarCallback(const std_msgs::Float32ConstPtr &sonar)
 */
 void odometryCallback(const nav_msgs::Odometry::ConstPtr &odom)
 {
-    mybug.goal.x = -1;
-    mybug.goal.y = -0.17;
+    mybug.goal.x = 2.5;
+    mybug.goal.y = 0.175;
     mybug.odometry = *odom;
 }
 
