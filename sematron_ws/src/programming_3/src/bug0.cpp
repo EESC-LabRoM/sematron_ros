@@ -48,7 +48,7 @@ void Bug0::goToPoint(void)
     double ang_vel = 0;
 
     double lin_vel = 0;
-    
+
     double factor = 0;
 
     double n_delta = math::normalizeAngle(delta);
@@ -57,11 +57,13 @@ void Bug0::goToPoint(void)
 
     ang_vel = mtplr * std::max(min_ang_vel, std::min(max_ang_vel, gain_ang_vel * abs_n_delta));
 
-    if (abs_n_delta > M_PI/16)
+    if (abs_n_delta > M_PI / 16)
     {
         // ROS_INFO("fix yaw");
         lin_vel = 0;
-    } else {
+    }
+    else
+    {
         // ROS_INFO("go straight ahead");
         lin_vel = max_lin_vel;
         // Small-factor obstacle avoidance for goToPoint task
@@ -70,7 +72,7 @@ void Bug0::goToPoint(void)
     }
 
     this->twist.linear.x = lin_vel;
-    if(distanceToGoal < 0.5)
+    if (distanceToGoal < 0.5)
     {
         this->twist.linear.x = min_lin_vel;
     }
@@ -83,15 +85,32 @@ void Bug0::goToPoint(void)
 void Bug0::wallFollower(void)
 {
     // obstacle in front of the robot
-    if(this->sonarArray[FRONT_SONAR] > 0 && this->sonarArray[FRONT_SONAR] < sonar_max_value)
+    if (this->sonarArray[FRONT_SONAR] != 0)
     {
+        // Too close - get back
+        if (this->sonarArray[FRONT_SONAR] < 0.2)
+        {
+            ROS_INFO("get back");
+            this->twist.angular.z = 0;
+            this->twist.linear.x = -max_lin_vel / 2;
+        }
         // turn left
-        this->twist.angular.z = max_ang_vel;
-        this->twist.linear.x = (this->sonarArray[FRONT_SONAR] - sonar_max_value / 5) * max_lin_vel;
+        else
+        {
+            ROS_INFO("front");
+            this->twist.angular.z = max_ang_vel * ((sonar_max_value - this->sonarArray[FRONT_SONAR]) / sonar_max_value);
+            this->twist.linear.x = (this->sonarArray[FRONT_SONAR] - sonar_max_value / 5) * max_lin_vel;
+        }
+    }
+    else if (this->sonarArray[FRONT_SONAR] == 0 && this->sonarArray[RIGHT_SONAR] > 0)
+    {
+        ROS_INFO("right");
+        this->twist.linear.x = max_lin_vel * 0.8;
     }
     else
     {
         // go straight ahead (obstacle must be on robot's right side)
+        ROS_INFO("else");
         this->twist.linear.x = max_lin_vel;
     }
 }
@@ -126,7 +145,7 @@ void Bug0::bugManager(void)
     // State 1: Obstacle free, pursue the goal!
     case 1:
         this->goToPoint();
-        
+
         if (distanceToGoal < min_distance_to_goal)
         {
             this->twist.linear.x = 0;
@@ -150,10 +169,11 @@ void Bug0::bugManager(void)
         // No more obstacles
         if (this->sonarArray[FRONT_SONAR] == 0 &&
             this->sonarArray[LEFT_SONAR] == 0 &&
-            this->sonarArray[RIGHT_SONAR] == 0) {
-                // Back to "goToPoint" task
-                ROS_INFO("State 1");
-                state = 1;
+            this->sonarArray[RIGHT_SONAR] == 0)
+        {
+            // Back to "goToPoint" task
+            ROS_INFO("State 1");
+            state = 1;
         }
 
         break;
